@@ -1,4 +1,4 @@
-def rotate_character(input_char, shift_value):
+def shift_letter(input_char, shift_value):
     if input_char == " ":
         return input_char
     else:
@@ -10,7 +10,7 @@ def rotate_character(input_char, shift_value):
         shifted_char = alphabet_list[adjusted_index]
         return shifted_char
 
-def shift_message(input_message, shift_value):
+def caesar_cipher(input_message, shift_value):
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     
     shifted_message = ""
@@ -25,7 +25,7 @@ def shift_message(input_message, shift_value):
         
     return shifted_message
 
-def adjust_character_by_letter(input_char, shift_char):
+def shift_by_letter(input_char, shift_char):
     alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     
@@ -39,7 +39,7 @@ def adjust_character_by_letter(input_char, shift_char):
         shifted_char = alphabet[adjusted_index]
         return shifted_char
     
-def key_based_cipher(input_message, cipher_key):
+def vigenere_cipher(input_message, cipher_key):
     alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     
@@ -60,7 +60,7 @@ def key_based_cipher(input_message, cipher_key):
     
     return ciphered_message
 
-def encode_with_scytale(input_message, rotation):
+def scytale_cipher(input_message, rotation):
     if len(input_message) % rotation != 0:
         input_message += '_' * (rotation - len(input_message) % rotation)
     
@@ -70,7 +70,7 @@ def encode_with_scytale(input_message, rotation):
     
     return ciphered_message
 
-def decode_with_scytale(input_message, rotation):
+def scytale_decipher(input_message, rotation):
     rows = len(input_message) // rotation
     deciphered_chars = []
     for row in range(rows):
