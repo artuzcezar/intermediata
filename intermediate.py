@@ -70,13 +70,16 @@ def scytale_cipher(input_message, rotation):
     
     return ciphered_message
 
-def scytale_decipher(input_message, rotation):
-    rows = len(input_message) // rotation
-    deciphered_chars = []
-    for row in range(rows):
-        for col in range(rotation):
-            index = col * rows + row
-            deciphered_chars.append(input_message[index])
-    deciphered_message = ''.join(deciphered_chars)
-    deciphered_message = deciphered_message.rstrip('_')
-    return deciphered_message
+def scytale_decipher(ciphertext, column_count):
+    message_length = len(ciphertext)
+    required_rows = message_length // column_count
+    remaining_characters = message_length % column_count
+
+    if remaining_characters:
+        required_rows += 1
+    plaintext_segments = [''] * column_count
+    for index in range(message_length):
+        column_index = index % column_count
+        plaintext_segments[column_index] += ciphertext[index]
+        
+    return ''.join(plaintext_segments)
